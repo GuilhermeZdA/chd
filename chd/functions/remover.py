@@ -12,6 +12,9 @@ def remover_usuario(cpf: str) -> None:
     # Transforma o cpf em str
     cpf_str = str(cpf)
 
+    if not cpf:
+        return "Cpf não informado"
+    
     try: 
         # Lê todos os dados do arquivo json. 
         with open(CAMINHO_ARQUIVO, 'r', encoding='utf8') as arquivo:
@@ -20,23 +23,30 @@ def remover_usuario(cpf: str) -> None:
     # Cria uma lista vazia caso o arquivo json esteja vazio
     except json.JSONDecodeError:
         dados_carregados = []
+
+    except FileExistsError:
+        return "Aquivo não existe!"
     
     dados_atualizados = []
 
     # Percorre a lista criada
+    cpf_encontrado = False
     for dado in dados_carregados:
-        if dado.get['cpf'] == cpf_str: # Caso o cpf passado seja igual ao da lista ele não sera adicionado na lista atualizada
+        if dado.get('cpf') == cpf_str:
+            # Caso o cpf passado seja igual ao da lista ele não sera adicionado na lista atualizada
+            cpf_encontrado = True
             continue
         else:
             dados_atualizados.append(dado)
 
+    if not cpf_encontrado:
+        return "CPF não econtrado!"
+    
     # Reescreve o arquivo json sem o cpf passado na func
     with open(CAMINHO_ARQUIVO, "w", encoding='utf8') as arquivo:
         json.dump(dados_atualizados, arquivo, indent=4)
 
-    print(
-         "Os dados do usuário foram apagados."
-    )
+    return "Os dados do usuário foram apagados."   
 
 # Ainda falta fazer algumas validações
 
