@@ -1,17 +1,16 @@
-[
-    {
+{
+    "12345678910" : {
         "nome" : "João",
-        "nascimento" : "2007",
-        "cpf" : "12345678910"
+        "nascimento" : "2007"
     },
-    {
+    
+    "23456789010" : {
         "nome" : "Maria",
-        "nascimento" : "2001",
-        "cpf" : "23456789010"
+        "nascimento" : "2001"
     },
-    {
-        "nome" : "Carlos",
-        "nascimento" : "1998",
-        "cpf" : "33344455567"
+
+    "33344455567" : {
+        "nome" : "Carlos augustos Marianos asdasdasd",
+        "nascimento" : "1998"
     }
-]
+}
