@@ -12,5 +12,3 @@ def exibirDados(arquivo):
         for cpf, v in pacientes.items():
             print(f"{v["nome"]:<40}{v["nascimento"]:<10}{cpf:<15}")
         print("=" * 70)
-
-exibirDados("teste.json")
