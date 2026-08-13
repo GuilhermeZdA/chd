@@ -1,5 +1,7 @@
-from database.db_manager import carregar_pacientes
+from database.db_manager import carregar_pacientes, salvar_pacientes
 from auth.hash.geradorHash import geradorHash
+from datetime import datetime
+
 def validar_cpf(cpf: str) -> bool:
 
     cpf = "".join(filter(str.isdigit, cpf))
@@ -20,9 +22,65 @@ def validar_cpf(cpf: str) -> bool:
         return True
     return False
 
+def validar_nome(nome: str) -> bool:
+    nome = nome.strip()
+
+    if not nome:
+        return False
+
+    if not all(caractere.isalpha() or caractere.isspace() for caractere in nome):
+        return False
+
+    return True
+
+def validar_email(email: str) -> bool:
+    email = email.strip()
+
+    if not email:
+        return False
+
+    if "@" not in email:
+        return False
+
+    if "." not in email.split("@")[-1]:
+        return False
+
+    return True
+
+def validar_senha(senha: str) -> bool:
+    if len(senha) < 6:
+        return False
+
+    if not any(caractere.isupper() for caractere in senha):
+        return False
+
+    if not any(caractere.isdigit() for caractere in senha):
+        return False
+
+    return True
+
+def validar_data_nascimento(data_nascimento: str) -> bool:
+    try:
+        datetime.strptime(data_nascimento, "%d%m%Y")
+        return True
+    except ValueError:
+        return False
+
 def cadastrar_paciente(nome, cpf, email, senha, data_nascimento):
+    if not validar_nome(nome):
+        return "Nome inválido"
+
     if not validar_cpf(cpf):
         return "CPF inválido"
+
+    if not validar_email(email):
+        return "Email inválido"
+
+    if not validar_senha(senha):
+        return "A senha deve ter no mínimo 6 caracteres, 1 letra maiúscula e 1 número."
+
+    if not validar_data_nascimento(data_nascimento):
+        return "Data de nascimento inválida"
 
     pacientes = carregar_pacientes()
 
@@ -39,3 +97,7 @@ def cadastrar_paciente(nome, cpf, email, senha, data_nascimento):
         "senha": senha_hash,
         "data_nascimento": data_nascimento
     }
+
+    salvar_pacientes(dados)
+
+    return "Paciente cadastrado com sucesso"
