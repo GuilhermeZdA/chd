@@ -16,7 +16,7 @@ def carregar_json(caminho_arquivo: Path) -> dict:
 
 
 
-def salvar_json(caminho_arquivo: Path, str, dados: dict) -> bool:
+def salvar_json(caminho_arquivo: Path, dados: dict) -> bool:
     try: 
         dados_carregados = carregar_json(caminho_arquivo)
         dados_carregados.update(dados)
@@ -60,14 +60,29 @@ def salvar_consultas(dados: dict) -> bool:
 
 
 def inicializar_banco() -> bool:
-    ...
+    caminho = caminhos.CAMINHO_DATABASE
+    banco_dados = ["bloqueios_agenda.json", "consultas.json", "medicos.json", "pacientes.json"]
 
-def gerar_backup(nome_arquivo) -> bool:
-    pacientes = carregar_pacientes()
+    for name in banco_dados:
+        name = caminho / name
+        if not name.exists():
+            with open(name, "w") as arquivo:
+                pass
+    
+    return True
+
+def gerar_backup(tipo, nome_arquivo) -> bool:
+    opcoes = {
+        "pacientes": carregar_pacientes,
+        "medicos": carregar_medicos,
+        "consultas": carregar_consultas,
+    }
+    dados = opcoes[tipo]()
+
     caminho_salvar = caminhos.CAMINHO_BACKUP / nome_arquivo
 
     with open(caminho_salvar, "w", encoding='utf-8') as arquivo:
-        json.dump(pacientes, arquivo, indent=4)
+        json.dump(dados, arquivo, indent=4)
     
     return True
 
