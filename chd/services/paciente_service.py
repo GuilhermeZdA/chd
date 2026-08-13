@@ -10,21 +10,18 @@ def remover_paciente(cpf: str) -> str:
     cpf = "".join(filter(str.isdigit, cpf))
     
     dados_carregados = carregar_pacientes()
-    dados_atualizados = {"pacientes": []}
 
     cpf_encontrado = False
-    for dado in dados_carregados["pacientes"]:
-        if dado.get('cpf') == cpf:
-            cpf_encontrado = True
-            continue
-        else:
-            dados_atualizados.update({"pacientes":[dado]})
+
+    if cpf in dados_carregados:
+        del dados_carregados[cpf]
+        cpf_encontrado = True
 
     if not cpf_encontrado:
         return "CPF não econtrado!"
     
     with open(caminhos.JSON_PACIENTES, "w", encoding='utf8') as arquivo:
-        json.dump(dados_atualizados, arquivo, indent=4)
+        json.dump(dados_carregados, arquivo, indent=4)
 
     return "Os dados do usuário foram apagados."   
 

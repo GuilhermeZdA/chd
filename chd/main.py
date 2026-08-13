@@ -1,9 +1,12 @@
 import caminhos
 import json
-from database.db_manager import salvar_pacientes
-from services.paciente_service import *
-
+import database
+import services
+import auth
 
 def main():
-    ...
-main()
+    database.inicializar_banco()
+    
+
+if __name__ == "__main__":
+    main()
