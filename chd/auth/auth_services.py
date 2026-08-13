@@ -1,3 +1,5 @@
+from database.db_manager import carregar_pacientes
+from auth.hash.geradorHash import geradorHash
 def validar_cpf(cpf: str) -> bool:
 
     cpf = "".join(filter(str.isdigit, cpf))
@@ -17,3 +19,23 @@ def validar_cpf(cpf: str) -> bool:
     if str(decimo_digito) == cpf[9] and str(undecimo_digito) == cpf[10]:
         return True
     return False
+
+def cadastrar_paciente(nome, cpf, email, senha, data_nascimento):
+    if not validar_cpf(cpf):
+        return "CPF inválido"
+
+    pacientes = carregar_pacientes()
+
+    for paciente in pacientes["pacientes"]:
+        if paciente.get("cpf") == cpf:
+            return "CPF já cadastrado"
+
+    senha_hash = geradorHash(senha)
+
+    dados = {
+        "nome": nome,
+        "cpf": cpf,
+        "email": email,
+        "senha": senha_hash,
+        "data_nascimento": data_nascimento
+    }
