@@ -59,7 +59,7 @@ def validar_senha(senha: str) -> bool:
 
     return True
 
-def validar_data_nascimento(data_nascimento: str) -> bool: % função para certificar se a data é possível.
+def validar_data_nascimento(data_nascimento: str) -> bool: # função para certificar se a data é possível.
     try:
         datetime.strptime(data_nascimento, "%d%m%Y")
         return True
@@ -86,7 +86,10 @@ def cadastrar_paciente(nome, cpf, email, senha, data_nascimento):
 
     for paciente in pacientes["pacientes"]:
         if paciente.get("cpf") == cpf:
-            return "CPF já cadastrado"
+            return "CPF já cadastrado."
+
+        if paciente.get("email") == email:
+            return "E-mail já cadastrado."
 
     senha_hash = geradorHash(senha)
 

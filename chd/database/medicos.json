@@ -1,3 +1,39 @@
 {
-    "medicos": []
+    "medicos": [
+        {
+            "nome": "Dr. Jo\u00e3o",
+            "crm": "CRM12345",
+            "especialidade": "Cardiologia",
+            "email": "joao@email.com",
+            "senha": "c00357563669ed21c34e13687cad669038eb88a2831fc8109b40ddc62f63e934"
+        },
+        {
+            "nome": "mateus",
+            "crm": "87432",
+            "especialidade": "cardiologista",
+            "email": "mateus@gmail.com",
+            "senha": "c00357563669ed21c34e13687cad669038eb88a2831fc8109b40ddc62f63e934"
+        },
+        {
+            "nome": "francisco",
+            "crm": "76543",
+            "especialidade": "cardiologista",
+            "email": "franciscogamer@gmail.com",
+            "senha": "23f6c75e19a73b3f755079cef7eedd7ee51e01be93618893b5d9b428aa9e526e"
+        },
+        {
+            "nome": "Deodoro",
+            "crm": "121212",
+            "especialidade": "geral",
+            "email": "dedoro@gmail.com",
+            "senha": "c00357563669ed21c34e13687cad669038eb88a2831fc8109b40ddc62f63e934"
+        },
+        {
+            "nome": "jose",
+            "crm": "1234",
+            "especialidade": "cardiologista",
+            "email": "medico@gmail.com",
+            "senha": "c00357563669ed21c34e13687cad669038eb88a2831fc8109b40ddc62f63e934"
+        }
+    ]
 }
