@@ -1,9 +1,0 @@
-{
-    "pacientes": [
-        {
-            "nome": "Paulo",
-            "idade": 76,
-            "cpf": "1231231"
-        }
-    ]
-}
