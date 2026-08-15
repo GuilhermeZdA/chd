@@ -7,3 +7,5 @@ JSON_CONSULTAS = CAMINHO_DATABASE / "consultas.json"
 JSON_MEDICOS = CAMINHO_DATABASE / "medicos.json"
 JSON_PACIENTES = CAMINHO_DATABASE / "pacientes.json"
 JSON_BLOQUEIOS = CAMINHO_DATABASE / "bloqueios_agenda.json"
+
+CAMINHO_BACKUP = CAMINHO_RAIZ / "backups"
