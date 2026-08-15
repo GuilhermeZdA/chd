@@ -82,7 +82,7 @@ def cadastro_paciente():
             while True:
                 cpf = input("Digite outro CPF: ")
 
-                if validar_cpf(cpf):
+                if auth.validar_cpf(cpf):
                     break
 
                 print("CPF inválido. Digite novamente.")
