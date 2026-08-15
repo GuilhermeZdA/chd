@@ -104,3 +104,34 @@ def cadastrar_paciente(nome, cpf, email, senha, data_nascimento):
     database.salvar_pacientes(dados)
 
     return "Paciente cadastrado com sucesso"
+
+
+def cadastrar_medico(nome, crm, especialidade, email, senha):
+        medicos = database.carregar_medicos()
+
+        for medico in medicos["medicos"]:
+            if medico.get("crm") == crm:
+             return "CRM já cadastrado"
+
+        for medico in medicos["medicos"]:
+            if medico.get("email") == email:
+                return "E-mail já cadastrado"
+            
+        if not validar_email(email):
+            return "E-mail inválido"
+
+        if not validar_senha(senha):
+            return "Senha inválida"
+
+        senha_hash = auth.gerarHash(senha)
+
+        dados = {
+            "nome": nome,
+            "crm": crm,
+            "especialidade": especialidade,
+            "email": email,
+            "senha": senha_hash
+    }
+        database.salvar_medicos(dados)
+
+        return "Médico cadastrado com sucesso."
