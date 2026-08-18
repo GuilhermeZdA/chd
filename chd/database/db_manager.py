@@ -9,10 +9,10 @@ def carregar_json(caminho_arquivo: Path) -> dict:
         return dados_carregados
     
     except FileNotFoundError as error:
-        raise FileNotFoundError(f"Arquivo {caminho_arquivo.name}.json não existe!") from error
+        raise FileNotFoundError(f"Arquivo {caminho_arquivo.name}não existe!") from error
         
     except json.JSONDecodeError as error:
-        raise ValueError(f"Arquivo {caminho_arquivo.name}.json está corrompido!") from error
+        raise ValueError(f"Arquivo {caminho_arquivo.name} está corrompido!") from error
 
 
 
@@ -66,8 +66,8 @@ def inicializar_banco() -> bool:
     for name in banco_dados:
         name = caminho / name
         if not name.exists():
-            with open(name, "w") as arquivo:
-                pass
+            with open(name, "w", encoding="utf-8") as arquivo:
+                json.dump({}, arquivo)
     
     return True
 
@@ -78,6 +78,9 @@ def gerar_backup(tipo, nome_arquivo) -> bool:
         "consultas": carregar_consultas,
     }
     dados = opcoes[tipo]()
+
+    if tipo not in opcoes:
+        raise ValueError("Tipo de backup inválido!")
 
     caminho_salvar = caminhos.CAMINHO_BACKUP / nome_arquivo
 

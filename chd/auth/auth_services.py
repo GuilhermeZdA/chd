@@ -12,7 +12,7 @@ def validar_cpf(cpf: str) -> bool:
     if cpf == cpf[0] * 11:
         return False
     
-    decimo_digito = sum(int(x) * y for x, y  in zip(cpf[:9], range(10, 1, -1)))
+    decimo_digito = sum(int(x) * y for x, y in zip(cpf[:9], range(10, 1, -1)))
     decimo_digito = 0 if (decimo_digito % 11) < 2 else 11 - (decimo_digito % 11)
     
     undecimo_digito = sum(int(x) * y for x, y  in zip(cpf[:10], range(11, 1, -1)))
@@ -27,7 +27,7 @@ def validar_nome(nome: str) -> bool: # receber um nome para devolver uma valor b
 
     if not nome: # Se estive espaço vazio, devolve False.
         return False
-
+    
     if not all(caractere.isalpha() or caractere.isspace() for caractere in nome): # verifica se o nome é composto apenas por letras.
         return False
 
