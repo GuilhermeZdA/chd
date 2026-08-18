@@ -3,8 +3,7 @@ import json
 import auth
 import services
 import database
-import backups
-
+#import backups
 
 def main():
 
@@ -25,6 +24,5 @@ def main():
 
         else:
             print("Opção inválida. Digite 1 ou 2.")
-
-
+            
 main()

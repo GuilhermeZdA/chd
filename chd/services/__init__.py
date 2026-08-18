@@ -15,3 +15,8 @@ from .medico_service import (
 from .menu import (
     menu
 )
+
+from .buscarDados import (
+    buscarPaciente,
+    buscarFuncionario
+)
