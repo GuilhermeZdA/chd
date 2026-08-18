@@ -1,1 +1,8 @@
-{ "12345678909": {"nome": "Bernado"}}
+{
+    "12345678909": {
+        "nome": "Marcos",
+        "email": "marquin@gmail.com",
+        "senha": "22Asf343",
+        "data_nascimento": "20121990"
+    }
+}

@@ -11,7 +11,3 @@ from .lerDados import (
 from .medico_service import (
     cadastro_medico
 )
-
-from .menu import (
-    menu
-)
