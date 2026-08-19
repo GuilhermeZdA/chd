@@ -60,7 +60,7 @@ def acesso_medico():
             print(f"\n\033[33m[Iniciando Criação de Conta...]\033[0m\n")
             sleep(2)
             limpar_tela()
-            return services.cadastro_medico()    
+            services.cadastro_medico()
         elif opcao == '0':
             print("\n\033[33m[Voltando ao menu principal...]\033[0m\n")
             sleep(2)
@@ -191,7 +191,7 @@ def menuAtualizar():
             
             if opc == '1':
                 while True:
-                    dado = str(input("Digite o novo nome: "))
+                    dado = str(input("\033[34mDigite o novo nome:\033[0m "))
 
                     if auth.validar_nome(dado):
                         break
@@ -199,7 +199,7 @@ def menuAtualizar():
                 sleep(2)
             elif opc == '2':
                 while True:
-                    dado = str(input("Digite a nova data de nascimento: "))
+                    dado = str(input("\033[34mDigite a nova data de nascimento:\033[0m "))
 
                     if auth.validar_data_nascimento(dado):
                         break
@@ -207,7 +207,7 @@ def menuAtualizar():
                 sleep(2)
             elif opc == '3':
                 while True:
-                    dado = str(input("Digite o novo email: "))
+                    dado = str(input("\033[34mDigite o novo email:\033[0m "))
 
                     if auth.validar_email(dado):
                         break
@@ -216,5 +216,5 @@ def menuAtualizar():
         else:
             print("\n\033[31m[Opção Inválida! Por favor, digite um número entre 0 e 2.]\n\033[0m")
             sleep(3)
-        
-menu_medicos()
+
+acesso_medico()

@@ -5,7 +5,8 @@ from .auth_services import (
     validar_nome,
     validar_senha,
     cadastrar_paciente,
-    cadastrar_medico
+    cadastrar_medico,
+    validar_crm
 )
 from .geradorHash import (
     gerarHash

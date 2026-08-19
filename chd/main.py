@@ -3,9 +3,9 @@ import json
 import auth
 import services
 import database
-
+import menu
 
 def main():
-    services.cadastro_medico()
+    menu.menu_inicial()
 if __name__ == "__main__":
     main()

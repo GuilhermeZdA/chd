@@ -16,7 +16,7 @@ def exibirDados():
 
     for cpf, dados in pacientes.items():
 
-        data_nasc = dados["nascimento"][:2] + "/" + dados["nascimento"][2:4] + "/" + dados["nascimento"][4:8]
+        data_nasc = dados["data_nascimento"][:2] + "/" + dados["data_nascimento"][2:4] + "/" + dados["data_nascimento"][4:8]
 
         print(f'{dados["nome"]:<40}{data_nasc:^20}{dados["email"]:^35}{cpf:^18}{dados["agendamento"]:^25}')
 

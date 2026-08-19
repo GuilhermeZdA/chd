@@ -6,7 +6,7 @@ def buscarPaciente(cpf):
     for key, dados in pacientes.items(): 
         if key == cpf: # Compara se o CPF informado condiz com o CPF no banco de dados
             encontrado = True
-            data_nasc = dados["nascimento"][:2] + "/" + dados["nascimento"][2:4] + "/" + dados["nascimento"][4:8]
+            data_nasc = dados["data_nascimento"][:2] + "/" + dados["data_nascimento"][2:4] + "/" + dados["data_nascimento"][4:8]
 
             print("\033[32m=\033[0m"* 135)
 
