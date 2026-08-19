@@ -11,3 +11,6 @@ from .lerDados import (
 from .medico_service import (
     cadastro_medico
 )
+from .buscarDados import (
+    buscarFuncionario, buscarPaciente
+)

@@ -1,10 +1,10 @@
 import json, os
+import caminhos
+def exibirDados():
 
-def exibirDados(arquivo):
+      # Identifica o caminho absoluto do arquivo
 
-    caminho = os.path.join(os.path.dirname(__file__), arquivo)  # Identifica o caminho absoluto do arquivo
-
-    with open(caminho, "r", encoding="utf-8") as arq: 
+    with open(caminhos.JSON_PACIENTES, "r", encoding="utf-8") as arq: 
         pacientes = json.load(arq)  # Carrega os dados do arquivo em uma váriavel
 
         print("=" * 70)

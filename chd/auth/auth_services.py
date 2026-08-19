@@ -66,7 +66,7 @@ def validar_data_nascimento(data_nascimento: str) -> bool: # função para certi
     except ValueError:
         return False
 
-def cadastrar_paciente(nome, cpf, email, senha, data_nascimento):
+def cadastrar_paciente(nome, cpf, email, data_nascimento):
     if not validar_nome(nome): # se na função retornar False, retorna "nome inválido."
         return "Nome inválido"
 
@@ -75,9 +75,6 @@ def cadastrar_paciente(nome, cpf, email, senha, data_nascimento):
 
     if not validar_email(email): # se na função retornar False, retorna "email inválido."
         return "Email inválido"
-
-    if not validar_senha(senha): # se na função retornar False, retorna a mensagem.
-        return "A senha deve ter no mínimo 6 caracteres, 1 letra maiúscula e 1 número."
 
     if not validar_data_nascimento(data_nascimento):
         return "Data de nascimento inválida"
@@ -91,13 +88,10 @@ def cadastrar_paciente(nome, cpf, email, senha, data_nascimento):
         if paciente.get("email") == email:
             return "E-mail já cadastrado."
 
-    senha_hash = auth.gerarHash(senha)
-
     dados = {
         "nome": nome,
         "cpf": cpf,
         "email": email,
-        "senha": senha_hash,
         "data_nascimento": data_nascimento
     }
 

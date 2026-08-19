@@ -2,7 +2,7 @@
     "12345678909": {
         "nome": "Edward",
         "email": "ed@gmail.com",
-        "senha": "1234567A",
-        "data_nascimento": "10102009"
+        "nascimento": "10102009",
+        "data": ["10:00", "1510"]
     }
 }

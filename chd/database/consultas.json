@@ -1,7 +1,5 @@
 {
-    "id": "cons-a1b2c3",
     "paciente_id": "pac-3f2a1c",
-    "medico_id": "med-9b7e21",
     "especialidade": "Cardiologia",
     "data": "2026-08-10",
     "horario_inicio": "14:00",

@@ -3,10 +3,9 @@ import json
 import auth
 import services
 import database
-import backups
-
+#import backups
 
 def main():
-
+    ...
 if __name__ == "__main__":
     main()
