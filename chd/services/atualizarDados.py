@@ -22,7 +22,7 @@ def menuAtualizar():
             return "nascimento", dado
         
 
-def atualizarDados(cpf):
+def atualizar_Dados(cpf):
     pacientes = carregar_pacientes()
     for key, dados in pacientes.items():
         if key == cpf:

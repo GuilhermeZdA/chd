@@ -19,3 +19,8 @@ from .agendamento_service import (
     gerar_agendamento,
     gerador_de_agendamentos_validos
 )
+
+from .atualizarDados import (
+    menuAtualizar,
+    atualizar_Dados
+)
