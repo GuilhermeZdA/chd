@@ -25,7 +25,7 @@ def salvar_json(caminho_arquivo: Path, dados: dict) -> bool:
         with open(caminho_arquivo, 'w', encoding='utf8') as arquivo:
             json.dump(dados_carregados, arquivo, ensure_ascii=False, indent=4)
         return True
-    
+
     except (FileNotFoundError, ValueError) as error:
         raise error
 
@@ -34,16 +34,11 @@ def carregar_pacientes() -> dict:
     dados = carregar_json(caminhos.JSON_PACIENTES)
     return dados
 
+
 def carregar_medicos() -> dict:
     dados = carregar_json(caminhos.JSON_MEDICOS)
     return dados
 
-def carregar_consultas() -> dict:
-    dados = carregar_json(caminhos.JSON_CONSULTAS)
-    return dados
-
-def carregar_bloqueios() -> dict:
-    ...
 
 def salvar_pacientes(dados: dict) -> bool:
     dados_salvar = salvar_json(caminhos.JSON_PACIENTES, dados)
@@ -51,10 +46,6 @@ def salvar_pacientes(dados: dict) -> bool:
 
 def salvar_medicos(dados: dict) -> bool:
     dados_salvar = salvar_json(caminhos.JSON_MEDICOS, dados)
-    return dados_salvar
-
-def salvar_consultas(dados: dict) -> bool:
-    dados_salvar = salvar_json(caminhos.JSON_CONSULTAS, dados)
     return dados_salvar
 
 

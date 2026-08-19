@@ -7,7 +7,6 @@ def cadastro_medico():
 
     nome = input("Digite o nome do médico: ")
     crm = input("Digite o CRM do médico: ")
-    especialidade = input("Digite a especialidade do médico: ")
 
     # Continua perguntando até o e-mail ser válido
     while True:
@@ -31,10 +30,8 @@ def cadastro_medico():
         resultado = auth.cadastrar_medico(
           nome,
           crm,
-          especialidade,
           email,
-          senha
-     )   
+        )   
 
         if resultado == "CRM já cadastrado":
           print(resultado)

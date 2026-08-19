@@ -27,8 +27,6 @@ def remover_paciente(cpf: str) -> str:
 
 # Ainda falta fazer algumas validações
 
-# Futuramente também da pra colocar outras funções dentro dessa para ela so fazer o papel de deletar o usuário
-# Exemplo: validador_cpf, carregar_dados, salvar_dados e uma de buscar usuario
 
 def cadastro_paciente():
 
