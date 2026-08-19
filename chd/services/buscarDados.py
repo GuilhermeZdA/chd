@@ -8,7 +8,7 @@ def buscarPaciente(cpf):
             print(f'{dados["nome"]:<40}{dados["nascimento"]:<10}{key:<15}')
             print("=" * 70)
         else:
-            print("CPF não identificado")
+            print("CPF não identificado!")
 
 def buscarFuncionario(crm):
     funcionarios = database.carregar_medicos()
