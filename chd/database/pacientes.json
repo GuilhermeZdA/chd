@@ -1,44 +1,9 @@
 {
-    "pacientes": [
-        {
-            "nome": "Paulo",
-            "idade": 76,
-            "cpf": "1231231"
-        },
-        {
-            "nome": "Joao",
-            "cpf": "31081862807",
-            "email": "joao@teste",
-            "senha": "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251",
-            "data_nascimento": "02032000"
-        },
-        {
-            "nome": "rodrigo",
-            "cpf": "74707894216",
-            "email": "rodrigo@gmail.com",
-            "senha": "c00357563669ed21c34e13687cad669038eb88a2831fc8109b40ddc62f63e934",
-            "data_nascimento": "20032000"
-        },
-        {
-            "nome": "rodolfo",
-            "cpf": "16331335919",
-            "email": "rodolfo123@gmai.com",
-            "senha": "c00357563669ed21c34e13687cad669038eb88a2831fc8109b40ddc62f63e934",
-            "data_nascimento": "02022000"
-        },
-        {
-            "nome": "jayr",
-            "cpf": "75919496088",
-            "email": "jayr@gmail.com",
-            "senha": "c00357563669ed21c34e13687cad669038eb88a2831fc8109b40ddc62f63e934",
-            "data_nascimento": "02022000"
-        },
-        {
-            "nome": "Weskley",
-            "cpf": "87607176020",
-            "email": "weskleyganer@gmail.com",
-            "senha": "c00357563669ed21c34e13687cad669038eb88a2831fc8109b40ddc62f63e934",
-            "data_nascimento": "01012000"
-        }
-    ]
+    "91837817065": {
+        "nome": "teste um",
+        "cpf": "91837817065",
+        "email": "teste@gmail.com",
+        "senha": "c00357563669ed21c34e13687cad669038eb88a2831fc8109b40ddc62f63e934",
+        "data_nascimento": "02022000"
+    }
 }

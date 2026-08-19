@@ -28,6 +28,9 @@ def validar_nome(nome: str) -> bool: # receber um nome para devolver uma valor b
     if not nome: # Se estive espaço vazio, devolve False.
         return False
 
+    if "  " in nome: # impede dois ou mais espaços consecutivos.
+        return False
+
     if not all(caractere.isalpha() or caractere.isspace() for caractere in nome): # verifica se o nome é composto apenas por letras.
         return False
 
@@ -36,13 +39,39 @@ def validar_nome(nome: str) -> bool: # receber um nome para devolver uma valor b
 def validar_email(email: str) -> bool:
     email = email.strip() # remove espaços antes e depois do email
 
-    if not email: #se email estiver vazio, devolve False
+    if not email: # se o email estiver vazio, retorna False
         return False
 
-    if "@" not in email: # Retorna False se não tiver @ no email.
+    
+    if email.count("@") != 1: # O email deve ter exatamente um "@"
         return False
 
-    if "." not in email.split("@")[-1]: # Retorna False se não tiver "." após o "@"
+    parte_antes, parte_depois = email.split("@")
+
+    
+    if not parte_antes: # Deve existir algo antes do "@"
+        return False
+
+    
+    if not parte_depois: # Deve existir algo depois do "@"
+        return False
+
+    
+    if "." not in parte_depois: # O domínio deve possuir um "."
+        return False
+
+    
+    if parte_depois.startswith(".") or parte_depois.endswith("."): # O "." não pode ser o primeiro ou o último caractere do domínio
+        return False
+
+    
+    parte_dominio, extensao = parte_depois.split(".", 1) # Deve existir algo entre o "@" e o "."
+
+    if not parte_dominio:
+        return False
+
+    
+    if len(extensao) < 2: # A extensão deve ter pelo menos 2 caracteres
         return False
 
     return True
@@ -59,10 +88,22 @@ def validar_senha(senha: str) -> bool:
 
     return True
 
-def validar_data_nascimento(data_nascimento: str) -> bool: # função para certificar se a data é possível.
+def validar_data_nascimento(data_nascimento: str) -> bool:
     try:
-        datetime.strptime(data_nascimento, "%d%m%Y")
+        data = datetime.strptime(data_nascimento, "%d%m%Y")
+
+        hoje = datetime.now()
+
+        # Não permite data de nascimento no futuro.
+        if data > hoje:
+            return False
+
+        # Não permite pessoas com mais de 120 anos(idade máxima).
+        if data.year < hoje.year - 120:
+            return False
+
         return True
+
     except ValueError:
         return False
 
@@ -84,12 +125,13 @@ def cadastrar_paciente(nome, cpf, email, senha, data_nascimento):
 
     pacientes = carregar_pacientes()
 
-    for paciente in pacientes["pacientes"]:
-        if paciente.get("cpf") == cpf:
-            return "CPF já cadastrado."
+    if cpf in pacientes:
+        return "CPF já cadastrado"
 
-        if paciente.get("email") == email:
-            return "E-mail já cadastrado."
+    for paciente in pacientes.values():
+     if paciente.get("email") == email:
+        return "E-mail já cadastrado"
+
 
     senha_hash = geradorHash(senha)
 
