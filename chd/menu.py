@@ -217,4 +217,3 @@ def menuAtualizar():
             print("\n\033[31m[Opção Inválida! Por favor, digite um número entre 0 e 2.]\n\033[0m")
             sleep(3)
 
-acesso_medico()
