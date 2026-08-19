@@ -31,17 +31,18 @@ def cadastro_medico():
           nome,
           crm,
           email,
+          senha
         )   
 
         if resultado == "CRM já cadastrado":
-          print(resultado)
-          crm = input("Digite outro CRM: ")
-          continue
+            print(resultado)
+            crm = input("Digite outro CRM: ")
+            continue
 
         if resultado == "E-mail já cadastrado":
-           print(resultado)
-           email = input("Digite outro e-mail: ")
-           continue
+            print(resultado)
+            email = input("Digite outro e-mail: ")
+            continue
 
         print(resultado)
         break

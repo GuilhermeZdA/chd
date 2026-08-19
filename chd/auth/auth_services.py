@@ -132,21 +132,19 @@ def cadastrar_paciente(nome, cpf, email, data_nascimento):
         return "E-mail já cadastrado"
 
 
-    dados = {
+    dados = { cpf : {
         "nome": nome,
-        "cpf": cpf,
         "email": email,
         "data_nascimento": data_nascimento,
         "agendamento": agendamento
-
-    }
+    }}
 
     database.salvar_pacientes(dados)
 
     return "Paciente cadastrado com sucesso"
 
 
-def cadastrar_medico(nome, crm, email):
+def cadastrar_medico(nome, crm, email, senha):
         if not validar_nome(nome):
             return "Nome inválido"
         
@@ -164,12 +162,17 @@ def cadastrar_medico(nome, crm, email):
         
         if not validar_crm(crm):
             return "CRM inválida"
+
+        if not validar_senha(senha):
+            return "Senha inválida"
         
-        dados = {
+        senha = auth.gerarHash(senha)
+        
+        dados = { crm: {
             "nome": nome,
-            "crm": crm,
             "email": email,
-        }
+            "senha": senha
+        }}
 
         database.salvar_medicos(dados)
 
