@@ -1,4 +1,4 @@
-from chd.database.db_manager import carregar_pacientes
+import database
 from datetime import datetime
 
 def menuAtualizar():
@@ -23,7 +23,7 @@ def menuAtualizar():
         
 
 def atualizar_Dados(cpf):
-    pacientes = carregar_pacientes()
+    pacientes = database.carregar_pacientes()
     for key, dados in pacientes.items():
         if key == cpf:
             novosDados = menuAtualizar()

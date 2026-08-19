@@ -52,15 +52,6 @@ def cadastro_paciente():
 
         print("E-mail inválido. Digite novamente.")
 
-    # Continua perguntando até a senha ser válida
-    while True:
-        senha = input("Digite a senha do paciente: ")
-
-        if auth.validar_senha(senha):
-            break
-
-        print("Senha inválida. Digite novamente.")
-
     data_nascimento = input(
         "Digite a data de nascimento do paciente: "
     )
@@ -70,7 +61,6 @@ def cadastro_paciente():
             nome,
             cpf,
             email,
-            senha,
             data_nascimento
         )
 

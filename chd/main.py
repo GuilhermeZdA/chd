@@ -6,6 +6,6 @@ import database
 
 
 def main():
-    services.gerador_de_agendamentos_validos()
+    services.cadastro_medico()
 if __name__ == "__main__":
     main()
