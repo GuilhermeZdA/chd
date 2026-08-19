@@ -61,7 +61,7 @@ def salvar_consultas(dados: dict) -> bool:
 
 def inicializar_banco() -> bool:
     caminho = caminhos.CAMINHO_DATABASE
-    banco_dados = ["bloqueios_agenda.json", "consultas.json", "medicos.json", "pacientes.json"]
+    banco_dados = ["medicos.json", "pacientes.json"]
 
     for name in banco_dados:
         name = caminho / name
@@ -71,27 +71,6 @@ def inicializar_banco() -> bool:
     
     return True
 
-def gerar_backup(tipo, nome_arquivo) -> bool:
-    opcoes = {
-        "pacientes": carregar_pacientes,
-        "medicos": carregar_medicos,
-        "consultas": carregar_consultas,
-    }
-    dados = opcoes[tipo]()
-
-    if tipo not in opcoes:
-        raise ValueError("Tipo de backup inválido!")
-
-    caminho_salvar = caminhos.CAMINHO_BACKUP / nome_arquivo
-
-    with open(caminho_salvar, "w", encoding='utf-8') as arquivo:
-        json.dump(dados, arquivo, indent=4)
-    
-    return True
-
-def restaurar_backup():
-    ...
-    
 
 
     

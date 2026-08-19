@@ -114,4 +114,4 @@ def login_medico():
     login_medico()
 
         
-login_medico()
+menu_medicos()

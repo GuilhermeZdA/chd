@@ -9,6 +9,4 @@ from .db_manager import (
     salvar_pacientes,
     salvar_json,
     inicializar_banco,
-    gerar_backup,
-    restaurar_backup
 )
