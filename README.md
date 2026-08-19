@@ -40,7 +40,6 @@ Os usuário deve informar o CPF de um paciente para retira-lo do cadastro.
     - BuscarPaciente.py
 
 ### Emanuel Hilley
-- Organizou os slides.
 - Desenvolveu as funcionalidades:
     - medico_service.py
     - paciente_service.py
