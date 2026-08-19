@@ -28,6 +28,7 @@ def acesso_paciente():
             cpf = input("\033[34mDigite o seu CPF: \033[0m")
             print("\n\033[33m[Buscando dados...]\033[0m\n")
             sleep(2)
+            limpar_tela()
             services.buscarPaciente(cpf)
             input("\033[34m[Pressione Enter para continuar]\033[0m")
         elif opcao == '0':
@@ -102,7 +103,7 @@ def menu_inicial():
 def menu_medicos():
     while True:
         limpar_tela()
-        print("\033[32m="*33)
+        print("\033[32m=\033[0m"*33)
         print("\033[34mSistema de Cadastro de Pacientes")
         print("\033[32m=\033[0m"*33)
         
@@ -116,17 +117,21 @@ def menu_medicos():
         if opcao == '1':
             print("\n\033[33m[Carregando o Sistema de Cadastro de Pacientes...]\033[0m\n")
             sleep(2)
+            limpar_tela()
             services.cadastro_paciente()
+            input("\n\033[34m[Pressione Enter para continuar]\033[0m")
         elif opcao == '2':
             print("\n\033[33m[Carregando a Exibição de Dados dos Pacientes...]\033[0m\n")
             sleep(2)
+            limpar_tela()
             services.exibirDados()
             input("\n\033[34m[Pressione Enter para continuar]\033[0m")
         elif opcao == '3':
             print("\n\033[33m[Carregando o Sistema de Remoção de Pacientes...]\033[0m\n")
             sleep(2)
-            cpf = input("\033[34mDigite o CPF do paciente: ")
+            cpf = input("\033[34mDigite o CPF do paciente: \033[0m")
             print(services.remover_paciente(cpf))
+            input("\n\033[34m[Pressione Enter para continuar]\033[0m")
         elif opcao == '4':
             print("\n\033[33m[Voltando para a área do médico...]\033[0m\n")
             sleep(2)
@@ -139,7 +144,7 @@ def login_medico():
     limpar_tela()
     print("\033[32m=\033[0m" * 33)
     print("\033[34mÁrea de Login\033[0m")
-    print("\033[32m=" * 33 + "\033[0m")
+    print("\033[32m=\033[0m" * 33)
 
     crm_digitada = input("\033[34mCRM:  \033[0m")
     senha = input("\033[34mSenha: \033[0m")

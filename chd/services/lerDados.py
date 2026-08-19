@@ -1,14 +1,25 @@
 import json, os
-import caminhos
-def exibirDados():
+import database
 
+def exibirDados():
+    pacientes = database.carregar_pacientes()
       # Identifica o caminho absoluto do arquivo
 
-    with open(caminhos.JSON_PACIENTES, "r", encoding="utf-8") as arq: 
-        pacientes = json.load(arq)  # Carrega os dados do arquivo em uma váriavel
+    #with open(caminhos.JSON_PACIENTES, "r", encoding="utf-8") as arq: 
+    #    pacientes = json.load(arq)  # Carrega os dados do arquivo em uma váriavel
 
-        print("=" * 70)
-        print(f'{"NOME":^40}{"IDADE":<10}{"CPF":^11}')
-        for cpf, v in pacientes.items():
-            print(f'{v["nome"]:<40}{v["nascimento"]:<10}{cpf:<15}')
-        print("=" * 70)
+    print("\033[32m=\033[0m"* 135)
+
+    print(f'\033[1m{"NOME":^40}{"DATA DE NASCIMENTO":^20}{"EMAIL":^35}{"CPF":^18}{"DATA DA CONSULTA":^25}\033[0m')
+
+    print("\033[32m=\033[0m"* 135)
+
+    for cpf, dados in pacientes.items():
+
+        data_nasc = dados["nascimento"][:2] + "/" + dados["nascimento"][2:4] + "/" + dados["nascimento"][4:8]
+
+        print(f'{dados["nome"]:<40}{data_nasc:^20}{dados["email"]:^35}{cpf:^18}{dados["agendamento"]:^25}')
+
+        print("\033[32m-\033[0m"* 135)    
+
+    
