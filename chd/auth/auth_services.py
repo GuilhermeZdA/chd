@@ -134,3 +134,34 @@ def cadastrar_medico(nome, crm, especialidade, email, senha):
         database.salvar_medicos(dados)
 
         return "Médico cadastrado com sucesso."
+
+def validar_crm(crm: str):
+    if not crm:
+        return False
+
+    crm = crm.strip().upper()
+    crm_limpa = crm.replace("-", "").replace(" ", "")
+
+    if len(crm_limpa) < 3 or len(crm_limpa) > 8:
+        return False
+    
+    lista_ufs_validas = [
+    'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 
+    'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 
+    'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
+    ]
+
+    digitos = "".join(digito for digito in crm_limpa if digito.isdigit())
+    uf = "".join(letra for letra in crm_limpa if letra.isalpha())
+
+    if len(uf) > 2:
+        return False
+    
+    if uf not in lista_ufs_validas:
+        return False
+
+    if len(digitos) + len(uf) != len(crm_limpa):
+        return False
+    
+    return True
+    
