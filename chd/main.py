@@ -36,6 +36,7 @@ def cadastro_paciente():
 
         print("Senha inválida. Digite novamente.")
 
+   
     data_nascimento = input(
         "Digite a data de nascimento do paciente: "
     )
@@ -85,7 +86,6 @@ def cadastro_medico():
 
     nome = input("Digite o nome do médico: ")
     crm = input("Digite o CRM do médico: ")
-    especialidade = input("Digite a especialidade do médico: ")
 
     # Continua perguntando até o e-mail ser válido
     while True:
@@ -96,22 +96,12 @@ def cadastro_medico():
 
         print("E-mail inválido. Digite novamente.")
 
-    # Continua perguntando até a senha ser válida
-    while True:
-        senha = input("Digite a senha do médico: ")
-
-        if validar_senha(senha):
-            break
-
-        print("Senha inválida. Digite novamente.")
-
+   
     while True:
         resultado = cadastrar_medico(
           nome,
           crm,
-          especialidade,
-          email,
-          senha
+          email
      )   
 
         if resultado == "CRM já cadastrado":
