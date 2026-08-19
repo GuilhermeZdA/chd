@@ -21,6 +21,5 @@ from .agendamento_service import (
 )
 
 from .atualizarDados import (
-    menuAtualizar,
     atualizar_Dados
 )

@@ -1,37 +1,21 @@
-from chd.database.db_manager import carregar_pacientes
-from datetime import datetime
+import database
+  
 
-def menuAtualizar():
-    while True:
-        print("=" * 70)
-        print("Qual dado será atualizado?")
-        print("""1 - NOME
-2 - DATA DE NASCIMENTO
-3 - CPF
-0 - VOLTAR""")
-        opc = int(input("Digite sua opção: "))
+def atualizar_Dados(cpf, tipo, inf):
 
-        if opc == 0:
-            break
-        elif opc == 1:
-            dado = str(input("Digite o novo nome: "))
-            return "nome", dado
-        elif opc == 2:
-            dado = int(input("Digite a nova data de nascimento: "))
-            idade = datetime.today().year - dado
-            return "nascimento", dado
-        
+    pacientes = database.carregar_pacientes()
 
-def atualizar_Dados(cpf):
-    pacientes = carregar_pacientes()
     for key, dados in pacientes.items():
         if key == cpf:
-            novosDados = menuAtualizar()
+            novosDados = (tipo, inf)
             if novosDados[0] == "nome":
                 dados["nome"] == novosDados[1]
-            elif novosDados[1] == "nascimento":
+            elif novosDados[0] == "nascimento":
                 dados["nascimento"] == novosDados[1]
+            elif novosDados[0] == "email":
+                dados["email"] == novosDados[1]
             print("Dados atualizados com sucesso!")
+            
             break
 
                 

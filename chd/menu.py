@@ -110,10 +110,11 @@ def menu_medicos():
         print("\033[1m1. Cadastrar Paciente")
         print("2. Exibir Dados dos Pacientes")
         print("3. Remover Paciente")
-        print("4. Voltar\033[0m")
+        print("4. Atualizar Dados dos Pacientes")
+        print("5. Voltar\033[0m")
         print("\033[32m-\033[0m" * 33)
         
-        opcao = input("\033[34mEscolha uma opção (1-4): \033[0m")
+        opcao = input("\033[34mEscolha uma opção (1-5): \033[0m")
         if opcao == '1':
             print("\n\033[33m[Carregando o Sistema de Cadastro de Pacientes...]\033[0m\n")
             sleep(2)
@@ -133,11 +134,15 @@ def menu_medicos():
             print(services.remover_paciente(cpf))
             input("\n\033[34m[Pressione Enter para continuar]\033[0m")
         elif opcao == '4':
+            print("\n\033[33m[Carregando o Sistema de Atualização de Dados dos Pacientes...]\033[0m\n")
+            sleep(2)
+            return menuAtualizar()
+        elif opcao == '5':
             print("\n\033[33m[Voltando para a área do médico...]\033[0m\n")
             sleep(2)
             return acesso_medico()
         else:
-            print("\n\033[31m[Opção Inválida! Por favor, digite um número entre 1 e 4.]\n\033[0m")
+            print("\n\033[31m[Opção Inválida! Por favor, digite um número entre 1 e 5.]\n\033[0m")
             sleep(3)
 
 def login_medico():
@@ -157,5 +162,59 @@ def login_medico():
         print("\033[31m[Usuário ou senha incorreta!]\033[0m")
         sleep(3)
     return login_medico()
+
+def menuAtualizar():
+    while True:
+        limpar_tela()
+
+        print("\033[32m=\033[0m" * 33)
+        print("\033[34mAtualizar dados\033[0m")
+        print("\033[32m=\033[0m" * 33)
+        print("\033[1m1. Nome")
+        print("2. Data de nascimento")
+        print("3. Email")
+        print("4. Voltar\033[0m")
+        print("\033[32m-\033[0m" * 33)   
+  
+        opc = input("\033[34mEscolha uma opção (1-4): \033[0m")
+
+        if opc == '4':
+            print("\n\033[33m[Voltando para o sistema de cadastro...]\033[0m\n")
+            sleep(2)
+            return menu_medicos()
+        if opc in ['1', '2', '3']:
+            while True:
+                cpf = input("\033[34mDigite o CPF do paciente: \033[0m")
+
+                if auth.validar_cpf(cpf):
+                    break
+            
+            if opc == '1':
+                while True:
+                    dado = str(input("Digite o novo nome: "))
+
+                    if auth.validar_nome(dado):
+                        break
+                services.atualizar_Dados(cpf, "nome", dado)
+                sleep(2)
+            elif opc == '2':
+                while True:
+                    dado = str(input("Digite a nova data de nascimento: "))
+
+                    if auth.validar_data_nascimento(dado):
+                        break
+                services.atualizar_Dados(cpf, "nascimento", dado)
+                sleep(2)
+            elif opc == '3':
+                while True:
+                    dado = str(input("Digite o novo email: "))
+
+                    if auth.validar_email(dado):
+                        break
+                services.atualizar_Dados(cpf, "email", dado)
+                sleep(2)
+        else:
+            print("\n\033[31m[Opção Inválida! Por favor, digite um número entre 0 e 2.]\n\033[0m")
+            sleep(3)
         
-menu_inicial()
+menu_medicos()
