@@ -3,6 +3,6 @@
         "nome": "Edward",
         "email": "ed@gmail.com",
         "nascimento": "10102009",
-        "data": ["10:00", "1510"]
+        "agendamento": "2027-02-27 15:00:00"
     }
 }

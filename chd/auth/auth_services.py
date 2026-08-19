@@ -1,6 +1,7 @@
 from datetime import datetime
 import auth
 import database
+import services
 
 def validar_cpf(cpf: str) -> bool:
 
@@ -80,6 +81,7 @@ def cadastrar_paciente(nome, cpf, email, data_nascimento):
         return "Data de nascimento inválida"
 
     pacientes = database.carregar_pacientes()
+    agendamento = services.gerador_de_agendamentos_validos()
 
     for paciente in pacientes["pacientes"]:
         if paciente.get("cpf") == cpf:
@@ -87,12 +89,15 @@ def cadastrar_paciente(nome, cpf, email, data_nascimento):
 
         if paciente.get("email") == email:
             return "E-mail já cadastrado."
+    
 
     dados = {
         "nome": nome,
         "cpf": cpf,
         "email": email,
-        "data_nascimento": data_nascimento
+        "data_nascimento": data_nascimento,
+        "agendamento": agendamento
+
     }
 
     database.salvar_pacientes(dados)
