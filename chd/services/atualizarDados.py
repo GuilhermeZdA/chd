@@ -14,8 +14,7 @@ def atualizar_Dados(cpf, tipo, inf):
             elif novosDados[0] == "email":
                 dados["email"] = novosDados[1]
             database.salvar_pacientes(pacientes)
-            print(pacientes)
-            input()
+
             print("Dados atualizados com sucesso!")
             
             break
